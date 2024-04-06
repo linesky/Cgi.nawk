@@ -1,2 +1,3 @@
-# Cgi.nawk
-Nawk awk script over cgi
+#debian.distro
+
+mini distro debian 6
