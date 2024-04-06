@@ -1,3 +1,3 @@
 #debian.distro
 
-mini distro debian 6
+mini distro debian 11 linux 6
