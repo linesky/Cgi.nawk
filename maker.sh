@@ -17,13 +17,19 @@ cp  /usr/bin/sh $roots/usr/bin
 cp  /usr/bin/sh $roots/bin
 cp  /usr/bin/date $roots/usr/bin
 cp  /usr/bin/date $roots/bin
-cp  /usr/bin/nano $roots/usr/bin
-cp  /usr/bin/nano $roots/bin
 cp  /usr/bin/grep $roots/usr/bin
 cp  /usr/bin/grep $roots/usr/bin
 cp  /usr/bin/grep $roots/bin
 cp  /usr/bin/sed $roots/usr/bin
 cp  /usr/bin/sed $roots/bin
+cp  /usr/bin/ls $roots/usr/bin
+cp  /usr/bin/ls $roots/bin
+cp  /usr/bin/mkdir $roots/usr/bin
+cp  /usr/bin/mkdir $roots/bin
+cp  /usr/bin/printf $roots/usr/bin
+cp  /usr/bin/printf $roots/bin
+cp  /usr/bin/echo $roots/usr/bin
+cp  /usr/bin/echo $roots/bin
 chmod 777 $roots/bin/*
 chmod 777 $roots/usr/bin/*
 printf "" > $tmps
