@@ -1,4 +1,4 @@
-printf "\x1bc\x1b[44;37m"
+printf "\x1bc\x1b[43;37m"
 roots=$(pwd)/roots
 tmps=/tmp/lists.txt
 tmps2=/tmp/lists2.txt
@@ -10,6 +10,7 @@ mkdir -p $roots/tmp
 mkdir -p $roots/lib
 mkdir -p $roots/dev
 mkdir -p $roots/boot
+mkdir -p $roots/boot/grub
 mkdir -p $roots/lib/i386-linux-gnu
 cp  /usr/bin/bash $roots/usr/bin
 cp  /usr/bin/bash $roots/bin
@@ -116,8 +117,20 @@ cp  /usr/bin/wget $roots/usr/bin
 cp  /usr/bin/wget $roots/bin
 cp  /usr/bin/curl $roots/usr/bin
 cp  /usr/bin/curl $roots/bin
+cp  /boot/* $roots/boot
+cp  /boot/grub/* $roots/boot/grub
+cp  /boot/grub/*.* $roots/boot/grub
+cp  /*.* $roots
+cp  /vm*.* $roots
+cp  /vm*.*.* $roots
+printf "" > $roots/dev/null
+printf "" > $roots/dev/stdio
+printf "" > $roots/dev/stdout
+printf "" > $roots/dev/stdin
+
 chmod 777 $roots/bin/*
 chmod 777 $roots/usr/bin/*
+
 printf "" > $tmps
 list1=$(ls $roots/usr/bin/*)
 for l1 in $list1
@@ -132,7 +145,7 @@ rt="$roots$l1"
 printf "$rt\n"
 cp "$l1" "$rt" 
 done < "$tmps2"
-
+genisoimage -o myos.iso -input-charset utf-8 -b initrd.img -no-emul-boot -boot-load-size 4  -boot-info-table $roots 
 
 
 
