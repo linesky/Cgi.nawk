@@ -10,8 +10,15 @@ mkdir -p $roots/tmp
 mkdir -p $roots/lib
 mkdir -p $roots/dev
 mkdir -p $roots/boot
+mkdir -p $roots/images
+mkdir -p $roots/isolinux
+mkdir -p $roots/kernel
 mkdir -p $roots/boot/grub
 mkdir -p $roots/lib/i386-linux-gnu
+cp  ./isolinux.cfg $roots/isolinux
+cp  ./isolinux.bin $roots/isolinux
+cp  ./ldlinux.bss $roots/isolinux
+cp  ./ldlinux.sys $roots/isolinux
 cp  /usr/bin/bash $roots/usr/bin
 cp  /usr/bin/bash $roots/bin
 cp  /usr/bin/sh $roots/usr/bin
@@ -121,6 +128,7 @@ cp  /boot/* $roots/boot
 cp  /boot/grub/* $roots/boot/grub
 cp  /boot/grub/*.* $roots/boot/grub
 cp  /*.* $roots
+cp  /vm* $roots
 cp  /vm*.* $roots
 cp  /vm*.*.* $roots
 printf "" > $roots/dev/null
@@ -142,10 +150,10 @@ while IFS= read -r l1
 do
 
 rt="$roots$l1"
-printf "$rt\n"
+#printf "$rt\n"
 cp "$l1" "$rt" 
 done < "$tmps2"
-genisoimage -o myos.iso -input-charset utf-8 -b initrd.img -no-emul-boot -boot-load-size 4  -boot-info-table $roots 
+genisoimage -o myos.iso -input-charset utf-8 -b isolinux/isolinux.bin -no-emul-boot -boot-load-size 4  -boot-info-table $roots 
 
 
 
