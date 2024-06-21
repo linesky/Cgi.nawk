@@ -1,6 +1,4 @@
-#debian.distro
+# fixed.point.emulator
 
-mini distro debian 11 linux 6
-
-you must check if you vmlinuz file is in root or in boot and change isoconfig.cfg
+c emulates fixed point on change root
 
